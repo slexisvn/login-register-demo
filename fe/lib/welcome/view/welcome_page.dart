@@ -2,13 +2,15 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import '../constants/routes.dart';
+import '../../login/login.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
-  static Route<void> route() {
-    return MaterialPageRoute<void>(builder: (_) => const WelcomePage());
+  static Page<void> page() => const MaterialPage<void>(child: WelcomePage());
+
+  static Route<WelcomePage> route() {
+    return MaterialPageRoute(builder: (_) => const WelcomePage());
   }
 
   Widget renderCompanyName() {
@@ -37,7 +39,7 @@ class WelcomePage extends StatelessWidget {
       children: <Widget>[
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, MyRoutes.login);
+            Navigator.of(context).push(LoginPage.route());
           },
           child: const Text(
             'Login',
@@ -49,7 +51,7 @@ class WelcomePage extends StatelessWidget {
         Container(height: 15),
         OutlinedButton(
           onPressed: () {
-            Navigator.pushNamed(context, MyRoutes.registerEmail);
+            // Navigator.pushNamed(context, MyRoutes.registerEmail);
           },
           child: const Text('Register'),
         ),
